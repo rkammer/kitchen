@@ -1,0 +1,179 @@
+<form [formGroup]="checkInForm" class="form needs-validation" autocomplete="off">
+
+</form>
+
+<div class="row">
+    <div class="col-8 offset-2">
+
+        <div class="card shadow w-100">
+            <div class="card-header">
+                <h4>Check-in</h4>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="checkInForm" class="form needs-validation" autocomplete="off">
+
+                        <div class="form-group">
+                            <label for="group">Group:</label>
+                            <select class="form-control"
+                                    formControlName="group"
+                                    [ngClass]="{'is-valid'   : checkInForm.controls['group'].touched &&  checkInForm.controls['group'].valid,
+                                                'is-invalid' : checkInForm.controls['group'].touched && !checkInForm.controls['group'].valid}">
+                                    <option *ngFor="let group of groups" [ngValue]="group.id">
+                                        {{group.name}}
+                                    </option>
+                            </select>
+                            <div class="text-danger"
+                                 *ngIf="checkInForm.controls['group'].errors &&
+                                        checkInForm.controls['group'].touched">
+                                <small>This field is required</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="name"
+                                   class="form-control"
+                                   id="name"
+                                   formControlName="name"
+                                   placeholder="name"
+                                   [ngClass]="{'is-valid'   : checkInForm.controls['name'].touched &&  checkInForm.controls['name'].valid,
+                                               'is-invalid' : checkInForm.controls['name'].touched && !checkInForm.controls['name'].valid}">
+                            <div class="text-danger"
+                                 *ngIf="checkInForm.controls['name'].errors &&
+                                        checkInForm.controls['name'].touched">
+                                <small>This field is required</small>
+                            </div>
+                        </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email"
+                               class="form-control"
+                               id="email"
+                               formControlName="email"
+                               placeholder="Enter email"
+                               [ngClass]="{'is-valid'   : checkInForm.controls['email'].touched &&  checkInForm.controls['email'].valid,
+                                           'is-invalid' : checkInForm.controls['email'].touched && !checkInForm.controls['email'].valid}">
+                        <div class="text-danger"
+                             *ngIf="checkInForm.controls['email'].errors?.required &&
+                                    checkInForm.controls['email'].touched">
+                            <small>This field is required</small>
+                        </div>
+                        <div class="text-danger"
+                             *ngIf="checkInForm.controls['email'].errors?.email &&
+                                    checkInForm.controls['email'].touched">
+                            <small>Not a valid email address</small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-4">
+                                <label>Are the kitchen counters clean?</label>
+                            </div>
+                            <div class="col-2">
+                                <div class="btn-group btn-group-toggle"
+                                    ngbRadioGroup
+                                    formControlName="counterClean">
+                                   <label ngbButtonLabel class="btn-primary">
+                                       <input ngbButton type="radio" value="true"> Yes
+                                   </label>
+                                   <label ngbButtonLabel class="btn-primary">
+                                       <input ngbButton type="radio" value="false"> No
+                                   </label>
+                               </div>
+                            </div>
+                            <div class="col">
+                                <div class="text-danger"
+                                    *ngIf="checkInForm.controls['counterClean'].errors?.required &&
+                                           checkInForm.controls['counterClean'].touched">
+                                   <small><i class="fas fa-arrow-left"></i>&nbsp;This field is required</small>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-4">
+                                <label>Is the kitchen floor clean?&nbsp;&nbsp;</label>
+                            </div>
+                            <div class="col-2">
+                                <div class="btn-group btn-group-toggle"
+                                    ngbRadioGroup
+                                    formControlName="floorClean">
+                                   <label ngbButtonLabel class="btn-primary">
+                                       <input ngbButton type="radio" value="true"> Yes
+                                   </label>
+                                   <label ngbButtonLabel class="btn-primary">
+                                       <input ngbButton type="radio" value="false"> No
+                                   </label>
+                               </div>
+                            </div>
+                            <div class="col">
+                                <div class="text-danger"
+                                    *ngIf="checkInForm.controls['floorClean'].errors?.required &&
+                                           checkInForm.controls['floorClean'].touched">
+                                   <small><i class="fas fa-arrow-left"></i>&nbsp;This field is required</small>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-4">
+                                <label>Were all the kitchen utensils properly stored?&nbsp;&nbsp;</label>
+                            </div>
+                            <div class="col-2">
+                                <div class="btn-group btn-group-toggle"
+                                    ngbRadioGroup
+                                    formControlName="utensils">
+                                   <label ngbButtonLabel class="btn-primary">
+                                       <input ngbButton type="radio" value="true"> Yes
+                                   </label>
+                                   <label ngbButtonLabel class="btn-primary">
+                                       <input ngbButton type="radio" value="false"> No
+                                   </label>
+                               </div>
+                            </div>
+                            <div class="col">
+                                <div class="text-danger"
+                                    *ngIf="checkInForm.controls['utensils'].errors?.required &&
+                                           checkInForm.controls['utensils'].touched">
+                                   <small><i class="fas fa-arrow-left"></i>&nbsp;This field is required</small>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comments">Other Comments</label>
+                        <textarea class="form-control"
+                                  id="comments"
+                                  rows="3"
+                                  formControlName="comments"
+                                  [ngClass]="{'is-valid'   : checkInForm.controls['comments'].touched &&  checkInForm.controls['email'].valid,
+                                              'is-invalid' : checkInForm.controls['comments'].touched && !checkInForm.controls['email'].valid}"></textarea>
+                        <div class="text-danger"
+                            *ngIf="checkInForm.controls['comments'].errors?.minlength &&
+                                   checkInForm.controls['comments'].touched">
+                            <small><i class="fas fa-arrow-left"></i>&nbsp;Please, write us a few more words</small>
+                        </div>
+                    </div>
+
+            </form>
+        </div> <!--Card Body-->
+
+        <div class="card-footer text-right">
+            <button class="btn btn-lg btn-default" (click)="cancel()">
+                <i class="fas fa-exclamation-square"></i>&nbsp;&nbsp;Cancel
+            </button>
+
+            <button class="btn btn-lg btn-primary ml-2" (click)="submit()">
+                <i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Submit
+            </button>
+        </div>
+
+    </div><!--Card-->
+</div>

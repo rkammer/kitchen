@@ -1,0 +1,22 @@
+<ngb-alert [dismissible]="true"  *ngIf="success">
+    <i class="fal fa-child"></i>&nbsp;Thank you for checking in to our Kitchen!
+</ngb-alert>
+
+<div class="d-flex align-items-center h-100">
+    <div class="card mx-auto my-auto w-25 shadow">
+        <div class="card-header text-light bg-dark">
+            <h5>Welcome to Channel Islands #214</h5>
+        </div>
+        <div class="card-body">
+
+            <a routerLink='/checkin'class="btn btn-primary btn-lg btn-block">
+                <i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;Check-in
+            </a>
+
+            <a routerLink='/checkout'class="btn btn-primary btn-lg btn-block">
+                <i class="fas fa-sign-in-alt fa-flip-horizontal"></i>&nbsp;&nbsp;Check-out
+            </a>
+
+        </div>
+    </div>
+</div>
